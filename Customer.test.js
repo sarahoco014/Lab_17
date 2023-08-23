@@ -20,5 +20,4 @@ describe('Customer', () => {
 
         expect(actual).toBe(expected);
     });
-
 });

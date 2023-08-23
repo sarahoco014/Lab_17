@@ -140,5 +140,4 @@ describe('Dealership', () => {
 
         expect(actual).toBe(expected);
     });
-
 });
