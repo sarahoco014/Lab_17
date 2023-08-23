@@ -1,6 +1,7 @@
 // imports
 
 const Car = require("./Car"); 
+const Customer = require("./Customer"); 
 
 // constructor
 
@@ -55,6 +56,25 @@ Dealership.prototype.findCarsByManufacturer = function(manufacturer) {
 Dealership.prototype.totalValueOfCarsInStock = function() {
     return this.carsInStock.reduce((total, car) => total + car.price, 0);
 }
+
+Dealership.prototype.sellCar = function(customer, car) {
+    const checkCarIndex = this.carsInStock.indexOf(car);
+
+    if(checkCarIndex !== -1) {
+        const customerBuysCar = customer.buyCar(car);
+
+        if(customerBuysCar) {
+            this.carsInStock.splice(checkCarIndex, 1);
+            return true; // car sold successfully
+        } else {
+            console.log("Insufficient funds.");
+            return false;
+        } 
+    } else {
+        console.log("Car is not present in stock. Please choose another car.");
+        return false;
+    }
+};
 
 // exports
 

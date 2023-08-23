@@ -1,3 +1,8 @@
+// imports
+
+const Car = require("./Car"); 
+const Dealership = require("./Dealership"); 
+
 // constructor
 
 const Customer = function(name, wallet) {
@@ -24,3 +29,19 @@ Customer.prototype.setWallet = function(wallet) {
     this.wallet = wallet;
 }
 
+// custom methods
+
+Customer.prototype.buyCar = function(car) {
+    if(this.wallet >= car.price) {
+        this.wallet = this.wallet - car.price;
+        this.car = car;
+        return true;
+    } else {
+        console.log("The car is not available. Please try again another time.");
+        return false;
+    }
+}
+
+// exports
+
+module.exports = Customer;

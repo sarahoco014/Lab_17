@@ -1,5 +1,6 @@
 const Car = require("./Car"); 
 const Dealership = require("./Dealership"); 
+const Customer = require("./Customer");
 
 describe('Dealership', () => {
 
@@ -123,4 +124,21 @@ describe('Dealership', () => {
 
         expect(actual).toBe(expected);
     });
+
+    // sellCar
+    test('can sell car', () => {
+        const car1 = new Car('BMW', 30000, 'Petrol');
+        const car2 = new Car('Toyota', 50000, 'Diesel');
+        
+        dealership.addCarToStock(car1);
+        dealership.addCarToStock(car2);
+
+        const customer1 = new Customer("John", 100000)
+
+        const actual = dealership.sellCar(customer1, car1);
+        expected = true;
+
+        expect(actual).toBe(expected);
+    });
+
 });
